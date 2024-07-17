@@ -1,0 +1,42 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class GuidePanel : MonoBehaviour
+{
+    GuideController guideController;
+    Canvas canvas;
+    [SerializeField] string welcomText;
+    [SerializeField] string successText;
+    [SerializeField] RectTransform clickLine;
+
+    private void Start()
+    {
+        canvas = transform.GetComponentInParent<Canvas>();
+        guideController = transform.GetComponent<GuideController>();
+        guideController.Guide(canvas, gameObject.GetComponent<RectTransform>(), GuideType.None);
+        gameObject.GetComponentInChildren<Text>().text = welcomText;
+    }
+    
+    public void ClickToContinue()
+    {
+        //if (guideController.IsClickValid(Input.mousePosition))
+        //{
+        //    guideController.Guide(canvas, GuideType.Rect, 2, 0.5f);
+        //    Debug.Log("click");
+        //}
+        if (guideController.endOfTutorial)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        if (guideController.IsClickValid(Input.mousePosition, clickLine))
+            guideController.Guide(canvas, GuideType.Rect, 2, 0.5f);
+    }
+
+    public void SuccessMessage()
+    {
+        guideController.Guide(canvas, gameObject.GetComponent<RectTransform>(), GuideType.None);
+        gameObject.SetActive(true);
+        gameObject.GetComponentInChildren<Text>().text = successText;
+    }
+}
