@@ -163,8 +163,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -358, y: 142.70593}
-  m_SizeDelta: {x: 800, y: 414.5881}
+  m_AnchoredPosition: {x: -358, y: 150}
+  m_SizeDelta: {x: 800, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1917697
 MonoBehaviour:
@@ -493,6 +493,121 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193740170}
+  m_CullTransparentMesh: 1
+--- !u!1 &207922685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 207922686}
+  - component: {fileID: 207922690}
+  - component: {fileID: 207922689}
+  - component: {fileID: 207922688}
+  - component: {fileID: 207922687}
+  m_Layer: 5
+  m_Name: Stack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &207922686
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207922685}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1672495581}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -542, y: 116}
+  m_SizeDelta: {x: 30, y: 155}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &207922687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207922685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20785504e6475a542824f3637ff1bd1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &207922688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207922685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 7
+  m_Spacing: 10
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 1
+--- !u!114 &207922689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207922685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &207922690
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207922685}
   m_CullTransparentMesh: 1
 --- !u!1 &217667322
 GameObject:
@@ -1194,8 +1309,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 668, y: -203}
-  m_SizeDelta: {x: 10, y: 403}
+  m_AnchoredPosition: {x: 668, y: -84.5}
+  m_SizeDelta: {x: 10, y: 164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &537166131
 MonoBehaviour:
@@ -1253,7 +1368,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &617141977
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1318,8 +1433,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 728944548}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TestManager, Assembly-CSharp
         m_MethodName: AddOperation
         m_Mode: 2
         m_Arguments:
@@ -1709,7 +1824,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 447, y: -400}
+  m_AnchoredPosition: {x: 447, y: -161}
   m_SizeDelta: {x: 432, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &713444281
@@ -1794,15 +1909,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360e5427ea6656145a96fd3d0ea4f8fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: 654321
-  target: 321654
+  data: 123456
+  target: 321456
   inputArea: {fileID: 1763002536}
   outputArea: {fileID: 780445516}
   targetArea: {fileID: 1028750362}
-  stackOn: {fileID: 0}
-  stack: {fileID: 0}
-  queueOn: {fileID: 217667323}
-  queue: {fileID: 733558655}
+  stackOn: {fileID: 217667323}
+  stack: {fileID: 207922686}
+  queueOn: {fileID: 0}
+  queue: {fileID: 0}
   block: {fileID: 2120730587}
   guideUI: {fileID: 1471177868}
   codeIndex: 0
@@ -1827,7 +1942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &733558655
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1844,8 +1959,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -544, y: 70}
-  m_SizeDelta: {x: 40, y: 250}
+  m_AnchoredPosition: {x: -262, y: 113}
+  m_SizeDelta: {x: 30, y: 155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &733558656
 MonoBehaviour:
@@ -1884,7 +1999,7 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_ReverseArrangement: 1
 --- !u!114 &733558658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2586,7 +2701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &940968634
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2651,8 +2766,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 728944548}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TestManager, Assembly-CSharp
         m_MethodName: AddOperation
         m_Mode: 2
         m_Arguments:
@@ -2812,7 +2927,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 396, y: -174}
+  m_AnchoredPosition: {x: 396, y: -210}
   m_SizeDelta: {x: 250, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1028750363
@@ -3361,7 +3476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1292366005
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3426,8 +3541,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 728944548}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TestManager, Assembly-CSharp
         m_MethodName: AddOperation
         m_Mode: 2
         m_Arguments:
@@ -3866,18 +3981,19 @@ MonoBehaviour:
   rectMat: {fileID: 2100000, guid: 5456d7462f4212a4b8550c7d5024bcf0, type: 2}
   guideList:
   - {fileID: 1917696}
-  - {fileID: 733558655}
+  - {fileID: 207922686}
   - {fileID: 217667323}
-  - {fileID: 617141977}
-  - {fileID: 1823372919}
+  - {fileID: 940968634}
+  - {fileID: 1292366005}
   textList:
-  - A new component is introduced into our machine, which called queue.
-  - Using this component can help you temporally keep some data. Different to stack,
-    data in the queue will be output in order as how they input.
+  - A new component is introduced into our machine, which called stack.
+  - Using this component can help you temporally keep some data. Notice that the
+    output order in the stack is reverse. Data first input in the stack will be output
+    last.
   - This is the switch of the component. When you turn on the switch, output order
-    will transport the data into queue instead of outputArea.
+    will transport the data into stack instead of outputArea.
   - You can use this command to controll the switch.
-  - This command is used to output data from queue.
+  - This command is used to output data from stack.
   startText: Let's do it
 --- !u!114 &1471177872
 MonoBehaviour:
@@ -4465,6 +4581,7 @@ RectTransform:
   - {fileID: 780445516}
   - {fileID: 1917696}
   - {fileID: 733558655}
+  - {fileID: 207922686}
   - {fileID: 710628063}
   - {fileID: 193740171}
   - {fileID: 1471177869}
@@ -4999,7 +5116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1823372919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5064,8 +5181,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 728944548}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TestManager, Assembly-CSharp
         m_MethodName: AddOperation
         m_Mode: 2
         m_Arguments:
@@ -5956,8 +6073,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\tWelcome! Try to use the updated machine to complete the data transfer.\n\nNotice:
-    the data should be output in the order given below\n\ntarget sequence:"
+  m_Text: "\tWelcome! In this mission, our machine has introduced a new kind of component
+    called \"stack\". The last data input to this component will be the first output.
+    Now, please use the updated machine to complete the data transfer.\n\tNotice:
+    the data should be output in the order given below\ntarget sequence:"
 --- !u!222 &2076109011
 CanvasRenderer:
   m_ObjectHideFlags: 0
