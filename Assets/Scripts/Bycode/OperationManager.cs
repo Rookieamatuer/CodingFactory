@@ -29,13 +29,17 @@ public class OperationManager
     Transform stackOn;
     Transform q;
     Transform queueOn;
+    Transform ad;
+    Transform addOn;
 
     bool isStackOn;
     bool isQueueOn;
+    bool isAddOn;
 
     public OperationManager(string s, string t, Transform inputT, Transform outputT, Transform target, 
                                                 Transform stackO=null, Transform stack=null, 
-                                                Transform queueO=null, Transform queue=null)
+                                                Transform queueO=null, Transform queue=null, 
+                                                Transform addO=null, Transform add=null)
     {
         inputTarget = inputT;
         outputTarget = outputT;
@@ -45,9 +49,12 @@ public class OperationManager
         queueOn = queueO;
         q = queue;
         data = s;
+        ad = add;
+        addOn = addO;
         opertaionList = new List<int>();
         isStackOn = false;
         isQueueOn = false;
+        isAddOn = false;
 
         for (int i = 1; i <= data.Length; ++i)
         {
@@ -72,10 +79,13 @@ public class OperationManager
         {
             case "Output":
                 InputAction();
-                if (stackOn != null)
+                //if (output == outputTarget)
                     output = isStackOn ? st : outputTarget;
-                if (queueOn != null)
+                if (output == outputTarget)
                     output = isQueueOn ? q : outputTarget;
+                if (output == outputTarget && ad != null)
+                    if (ad.childCount < 2)
+                        output = isAddOn ? ad : outputTarget;
                 OutputAction(output);
                 break;
             case "StackOn":
@@ -95,6 +105,15 @@ public class OperationManager
                 break;
             case "QueueOutput":
                 QueueOutputAction();
+                break;
+            case "AddOn":
+                if (addOn != null)
+                {
+                    AddOnAction(addOn);
+                }
+                break;
+            case "AddOutput":
+                AddOutputAction();
                 break;
         }
     }
@@ -159,7 +178,14 @@ public class OperationManager
         if (st.childCount > 0)
         {
             currentData = st.GetChild(0);
-            OutputAction(outputTarget);
+            if (ad != null && isAddOn)
+            {
+                OutputAction(ad);
+            }
+            else
+            {
+                OutputAction(outputTarget);
+            }
         }
     }
 
@@ -183,14 +209,48 @@ public class OperationManager
         if (q.childCount > 0)
         {
             currentData = q.GetChild(q.childCount - 1);
-            OutputAction(outputTarget);
+            if (ad != null && isAddOn)
+            {
+                OutputAction(ad);
+            }
+            else
+            {
+                OutputAction(outputTarget);
+            }
         }
     }
 
     private void AddOnAction(Transform t)
     {
-        if (t.childCount < 2)
-            OutputTarget(t);
+        isAddOn = !isAddOn;
+        if (isAddOn)
+        {
+            //OutputTarget(st);
+            t.GetComponent<Image>().color = Color.green;
+        }
+        else
+        {
+            //OutputTarget(outputTarget);
+            t.GetComponent<Image>().color = Color.red;
+        }
+    }
+
+    private void AddOutputAction()
+    {
+        if (ad.childCount == 2)
+        {
+            currentData = ad.GetChild(0);
+            int sum = 0;
+            Transform tmp;
+            for (int i = 0; i < ad.childCount; i++)
+            {
+                tmp = ad.GetChild(i);
+                sum += int.Parse(tmp.GetComponentInChildren<Text>().text);
+            }
+            Object.Destroy(ad.GetChild(1).gameObject);
+            currentData.GetComponentInChildren<Text>().text = sum.ToString();
+            OutputAction(outputTarget);
+        }
     }
 
     private void MinorOn(Transform t)

@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class TestLevelManager : MonoBehaviour
 {
     [SerializeField] string data;
     [SerializeField] string target;
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject guideUI;
 
+    [SerializeField] int currentIndex = 0;
     [SerializeField] int codeIndex;
     [SerializeField] int codeCount;
 
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
             currentCode.GetComponent<Image>().color = Color.green;
             currentCode.tag = obj.tag;
             currentCode.GetComponentInChildren<Text>().text = currentCode.tag;
-            
+
             codeIndex++;
             //Debug.Log("name:" + button.name);
             //Debug.Log("tag:" + button.tag);

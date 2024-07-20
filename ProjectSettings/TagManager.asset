@@ -14,6 +14,8 @@ TagManager:
   - QueueOutput
   - StackOn
   - QueueOn
+  - AddOutput
+  - AddOn
   layers:
   - Default
   - TransparentFX
