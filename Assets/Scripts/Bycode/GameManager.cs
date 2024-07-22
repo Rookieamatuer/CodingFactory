@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Transform block;
 
+    public Transform infoText=null;
+
     [SerializeField] GameObject guideUI;
 
     [SerializeField] int codeIndex;
@@ -28,6 +30,19 @@ public class GameManager : MonoBehaviour
 
     public int numCount;
     private OperationManager operationManager;
+
+    public static GameManager instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        } else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

@@ -13,6 +13,7 @@ public class TestManager : MonoBehaviour
     public Transform resultArea;
     public Transform stackComponent;
     public Transform queueComponent;
+    public Transform infoText;
     public bool stackOn;
     public bool queueOn;
     private bool stackMark;
