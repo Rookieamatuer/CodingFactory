@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GuidePanel : MonoBehaviour
@@ -7,14 +8,20 @@ public class GuidePanel : MonoBehaviour
     Canvas canvas;
     [SerializeField] string welcomText;
     [SerializeField] string successText;
+    [SerializeField] string errorText;
     [SerializeField] RectTransform clickLine;
+    bool isFinished;
+    bool reStart;
 
     private void Start()
     {
         canvas = transform.GetComponentInParent<Canvas>();
         guideController = transform.GetComponent<GuideController>();
         guideController.Guide(canvas, gameObject.GetComponent<RectTransform>(), GuideType.None);
-        gameObject.GetComponentInChildren<Text>().text = welcomText;
+        if (!isFinished)
+            gameObject.GetComponentInChildren<Text>().text = welcomText;
+
+        
     }
     
     public void ClickToContinue()
@@ -26,6 +33,16 @@ public class GuidePanel : MonoBehaviour
         //}
         if (guideController.endOfTutorial)
         {
+            
+            if (isFinished && SceneManager.GetActiveScene().buildIndex < 6)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else if (reStart)
+            {
+                TestGameManager.instance.ResetLevel();
+                return;
+            }
             gameObject.SetActive(false);
             return;
         }
@@ -35,8 +52,23 @@ public class GuidePanel : MonoBehaviour
 
     public void SuccessMessage()
     {
+        if (guideController == null)
+        {
+            guideController = transform.GetComponent<GuideController>();
+        }
+        gameObject.SetActive(true);
+        //guideController.enabled = false;
+        guideController.EndOfTutotial();
+        gameObject.GetComponentInChildren<Text>().text = successText;
+        
+        isFinished = true;
+    }
+
+    public void ErrorMessage()
+    {
         guideController.Guide(canvas, gameObject.GetComponent<RectTransform>(), GuideType.None);
         gameObject.SetActive(true);
-        gameObject.GetComponentInChildren<Text>().text = successText;
+        gameObject.GetComponentInChildren<Text>().text = errorText;
+        reStart = true;
     }
 }

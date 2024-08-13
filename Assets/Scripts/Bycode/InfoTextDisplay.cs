@@ -4,27 +4,42 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InfoTextDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerMoveHandler
+public class InfoTextDisplay : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler, IPointerMoveHandler
 {
-    public void OnPointerEnter(PointerEventData eventData)
+    //public void OnPointerEnter(PointerEventData eventData)
+    //{
+    //    //GameObject infoText = Instantiate<GameObject>(Resources.Load<GameObject>(""));
+    //    GameManager.instance.infoText.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y + 25, 0);
+    //    GameManager.instance.infoText.gameObject.SetActive(true);
+    //    GameManager.instance.infoText.GetComponentInChildren<Text>().text = this.name;
+    //}
+    ////鼠标离开
+    //public void OnPointerExit(PointerEventData eventData)
+    //{
+    //    GameManager.instance.infoText.gameObject.SetActive(false);
+    //}
+    ////鼠标在ui里滑动
+    //public void OnPointerMove(PointerEventData eventData)
+    //{
+    //    GameManager.instance.infoText.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y + 25, 0);
+    //    GameManager.instance.infoText.gameObject.SetActive(true);
+    //    GameManager.instance.infoText.GetComponentInChildren<Text>().text = this.name;
+    //}
+    private void OnMouseEnter()
     {
-        //GameObject infoText = Instantiate<GameObject>(Resources.Load<GameObject>(""));
-        GameManager.instance.infoText.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y + 25, 0);
-        GameManager.instance.infoText.gameObject.SetActive(true);
-        GameManager.instance.infoText.GetComponentInChildren<Text>().text = this.name;
+        TestGameManager.instance.infoText.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y + 25, 0);
+        TestGameManager.instance.infoText.gameObject.SetActive(true);
+        TestGameManager.instance.infoText.GetComponentInChildren<Text>().text = this.name;
     }
-    //鼠标离开
-    public void OnPointerExit(PointerEventData eventData)
+    private void OnMouseExit()
     {
-        GameManager.instance.infoText.gameObject.SetActive(false);
+        TestGameManager.instance.infoText.gameObject.SetActive(false);
     }
-    //鼠标在ui里滑动
-    public void OnPointerMove(PointerEventData eventData)
+    private void OnMouseOver()
     {
-        GameManager.instance.infoText.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y + 25, 0);
-        GameManager.instance.infoText.gameObject.SetActive(true);
-        GameManager.instance.infoText.GetComponentInChildren<Text>().text = this.name;
+        TestGameManager.instance.infoText.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y + 25, 0);
+        TestGameManager.instance.infoText.gameObject.SetActive(true);
+        TestGameManager.instance.infoText.GetComponentInChildren<Text>().text = this.name;
     }
-
 }
 

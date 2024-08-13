@@ -21,7 +21,7 @@ public class GuideController : MonoBehaviour
     [SerializeField]private List<string> textList;
 
     private int currentIndex;
-    public bool endOfTutorial { get; private set; }
+    public bool endOfTutorial;
 
     [SerializeField] private string startText;
 
@@ -82,8 +82,8 @@ public class GuideController : MonoBehaviour
         return RectTransformUtility.RectangleContainsScreenPoint(clickPoint, sp);
     }
 
-    public bool IsEndOfTutotial()
+    public void EndOfTutotial()
     {
-        return endOfTutorial;
+        endOfTutorial = true;
     }
 }

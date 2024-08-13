@@ -1,0 +1,76 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class MaskPanel : MonoBehaviour
+{
+    MaskController guideController;
+    Canvas canvas;
+    [SerializeField] string welcomText;
+    [SerializeField] string successText;
+    [SerializeField] string errorText;
+    [SerializeField] RectTransform clickLine;
+    bool isFinished;
+    bool reStart;
+
+    private void Start()
+    {
+        canvas = transform.GetComponentInParent<Canvas>();
+        guideController = transform.GetComponent<MaskController>();
+        //guideController.Guide(canvas, gameObject.GetComponent<RectTransform>(), GuideType.None);
+        if (!isFinished)
+            gameObject.GetComponentInChildren<Text>().text = welcomText;
+
+
+    }
+
+    public void ClickToContinue()
+    {
+        //if (guideController.IsClickValid(Input.mousePosition))
+        //{
+        //    guideController.Guide(canvas, GuideType.Rect, 2, 0.5f);
+        //    Debug.Log("click");
+        //}
+        if (guideController.endOfTutorial)
+        {
+
+            if (isFinished && SceneManager.GetActiveScene().buildIndex < 6)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else if (reStart)
+            {
+                GameManager.instance.ResetLevel();
+                return;
+            }
+            gameObject.SetActive(false);
+            return;
+        }
+        if (guideController.IsClickValid(Input.mousePosition, clickLine))
+            guideController.Guide(canvas, GuideType.Rect, 2, 0.5f);
+    }
+
+    public void SuccessMessage()
+    {
+        if (guideController == null)
+        {
+            guideController = transform.GetComponent<MaskController>();
+        }
+        gameObject.SetActive(true);
+        //guideController.enabled = false;
+        guideController.EndOfTutotial();
+        gameObject.GetComponentInChildren<Text>().text = successText;
+
+        isFinished = true;
+    }
+
+    public void ErrorMessage()
+    {
+        guideController.Guide(canvas, gameObject.GetComponent<RectTransform>(), GuideType.None);
+        gameObject.SetActive(true);
+        gameObject.GetComponentInChildren<Text>().text = errorText;
+        reStart = true;
+    }
+}
