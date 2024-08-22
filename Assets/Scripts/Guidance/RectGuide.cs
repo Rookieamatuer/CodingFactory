@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class RectGuide : GuideBase
 {
-    protected float width;//Он©у©М
-    protected float height;//Он©у╦ъ
+    protected float width;// hollow part width
+    protected float height;// hollow part height
 
     float scalewidth;
     float scaleheight;
