@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class DraftGameManager : MonoBehaviour
 {
     [SerializeField] string data;
     [SerializeField] string target;
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     public int numCount;
     private OperationManager operationManager;
 
-    public static GameManager instance;
+    public static DraftGameManager instance;
 
     private void Awake()
     {

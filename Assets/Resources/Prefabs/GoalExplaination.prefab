@@ -259,4 +259,4 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "\tWelcome! Try to use the updated machine to output the target data. \n\nNotice:
     If you are not sure about what the component is and what it can do, try to focus
-    your mouse on it or click on it\ntarget sequence:"
+    your mouse on it\ntarget sequence:"

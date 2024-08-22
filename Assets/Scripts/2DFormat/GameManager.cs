@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TestGameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] Transform block;
     [SerializeField] Transform input;
@@ -18,6 +18,10 @@ public class TestGameManager : MonoBehaviour
     [SerializeField] Transform queue = null;
     [SerializeField] Transform currentData;
 
+    [Header("Execute Button")]
+    [SerializeField] Button executeBtn;
+    [SerializeField] Button stepBtn;
+
     [Header("Component List for level with duplicate components")]
     [SerializeField] List<Transform> stackList;
     [SerializeField] List<Transform> queueList;
@@ -25,8 +29,10 @@ public class TestGameManager : MonoBehaviour
     [SerializeField] string rawData;
     [SerializeField] string target;
     [SerializeField] float intervalTime = 1f;
-    bool isRestart;
+    static bool isRestart;
     bool isAccelerate;
+
+    bool isWorking;
 
     [SerializeField] bool isHanoiLevel=false;
 
@@ -41,7 +47,7 @@ public class TestGameManager : MonoBehaviour
     int currentCommand;
 
     ComponentManager componentManager;
-    public static TestGameManager instance;
+    public static GameManager instance;
 
     private void Awake()
     {
@@ -86,6 +92,22 @@ public class TestGameManager : MonoBehaviour
         tmpTime = Time.time;
     }
 
+    private void Update()
+    {
+        if (isWorking)//如果被点击
+        {
+            tmpTime += Time.deltaTime;
+            //间隔时长
+            if (tmpTime > intervalTime * 1.5f)
+            {
+                tmpTime = 0;
+                executeBtn.enabled = true;
+                stepBtn.enabled = true;
+                isWorking = false;
+            }
+        }
+    }
+
     public bool CheckAnswer()
     {
         Transform tmp = isHanoiLevel ? stackList[2].GetChild(0) : output;
@@ -127,6 +149,9 @@ public class TestGameManager : MonoBehaviour
         List<GameObject> commands = block.GetComponent<CommandManager>().commands;
         for (currentCommand = 0; currentCommand < commands.Count; currentCommand++)
         {
+            isWorking = true;
+            executeBtn.enabled = false;
+            stepBtn.enabled = false;
             string txt = commands[currentCommand].GetComponentInChildren<Text>().text;
             block.GetChild(0).GetChild(0).GetChild(currentCommand).GetComponent<Image>().color = Color.cyan;
             if (currentCommand > 0)
@@ -136,18 +161,18 @@ public class TestGameManager : MonoBehaviour
             
             Debug.Log("id: " + currentCommand + " time: " + (Time.time - tmpTime));
             tmpTime = Time.time;
-            StartCoroutine(componentManager.ExecuteCommand(txt, intervalTime));
+            StartCoroutine(componentManager.ExecuteCommand(txt, intervalTime, isHanoiLevel));
             yield return new WaitForSeconds(intervalTime * 1.5f);
         }
         if (CheckAnswer())
         {
             Debug.Log("Success!");
-            //guideUI.GetComponent<GuidePanel>().SuccessMessage();
+            guideUI.GetComponent<GuidePanel>().SuccessMessage();
         }
         else
         {
             Debug.Log("Wrong!");
-            //guideUI.GetComponent<GuidePanel>().ErrorMessage();
+            guideUI.GetComponent<GuidePanel>().ErrorMessage();
         }
     }
 
@@ -157,13 +182,17 @@ public class TestGameManager : MonoBehaviour
         if (currentCommand < commands.Count)
         {
             //yield return new WaitForSeconds(0.5f);
+            isWorking = true;
+            executeBtn.enabled = false;
+            stepBtn.enabled = false;
+
             string txt = commands[currentCommand].GetComponentInChildren<Text>().text;
             block.GetChild(0).GetChild(0).GetChild(currentCommand).GetComponent<Image>().color = Color.cyan;
             if (currentCommand > 0)
             {
                 block.GetChild(0).GetChild(0).GetChild(currentCommand - 1).GetComponent<Image>().color = Color.green;
             }
-            StartCoroutine(componentManager.ExecuteCommand(txt, intervalTime));
+            StartCoroutine(componentManager.ExecuteCommand(txt, intervalTime, isHanoiLevel));
             yield return new WaitForSeconds(intervalTime * 1.5f);
             ++currentCommand;
 
@@ -171,7 +200,7 @@ public class TestGameManager : MonoBehaviour
         if (CheckAnswer())
         {
             Debug.Log("Success!");
-            //guideUI.GetComponent<GuidePanel>().SuccessMessage();
+            guideUI.GetComponent<GuidePanel>().SuccessMessage();
         }
     }
 

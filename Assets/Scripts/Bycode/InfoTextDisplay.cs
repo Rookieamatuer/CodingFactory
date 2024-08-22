@@ -27,19 +27,19 @@ public class InfoTextDisplay : MonoBehaviour//, IPointerEnterHandler, IPointerEx
     //}
     private void OnMouseEnter()
     {
-        TestGameManager.instance.infoText.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y + 25, 0);
-        TestGameManager.instance.infoText.gameObject.SetActive(true);
-        TestGameManager.instance.infoText.GetComponentInChildren<Text>().text = this.name;
+        GameManager.instance.infoText.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y + 25, 0);
+        GameManager.instance.infoText.gameObject.SetActive(true);
+        GameManager.instance.infoText.GetComponentInChildren<Text>().text = this.name;
     }
     private void OnMouseExit()
     {
-        TestGameManager.instance.infoText.gameObject.SetActive(false);
+        GameManager.instance.infoText.gameObject.SetActive(false);
     }
     private void OnMouseOver()
     {
-        TestGameManager.instance.infoText.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y + 25, 0);
-        TestGameManager.instance.infoText.gameObject.SetActive(true);
-        TestGameManager.instance.infoText.GetComponentInChildren<Text>().text = this.name;
+        GameManager.instance.infoText.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y + 25, 0);
+        GameManager.instance.infoText.gameObject.SetActive(true);
+        GameManager.instance.infoText.GetComponentInChildren<Text>().text = this.name;
     }
 }
 

@@ -42,7 +42,7 @@ public class MaskPanel : MonoBehaviour
             }
             else if (reStart)
             {
-                GameManager.instance.ResetLevel();
+                DraftGameManager.instance.ResetLevel();
                 return;
             }
             gameObject.SetActive(false);

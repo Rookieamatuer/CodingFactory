@@ -66,7 +66,7 @@ public class ComponentManager
         outputT.GetComponent<ComponentTmp>().InputData(inputData);
     }
 
-    public IEnumerator ExecuteCommand(string command, float t)
+    public IEnumerator ExecuteCommand(string command, float t, bool isHanoi)
     {
         switch (command)
         {
@@ -208,6 +208,7 @@ public class ComponentManager
                 }
                 break;
             case "Stack 1 Output":
+                if (isHanoi && IsDefaultTarget()) break;
                 if (sList != null && !sList[0].GetComponent<ComponentBase>().isEmpty())
                 {
                     float posX = targetComponent.tag == "Output" ? sList[0].GetComponent<ComponentBase>().outputPoint : targetComponent.position.x;
@@ -223,6 +224,7 @@ public class ComponentManager
                 }
                 break;
             case "Stack 2 Output":
+                if (isHanoi && IsDefaultTarget()) break;
                 if (sList.Count >= 2 && !sList[1].GetComponent<ComponentBase>().isEmpty())
                 {
                     float posX = targetComponent.tag == "Output" ? sList[1].GetComponent<ComponentBase>().outputPoint : targetComponent.position.x;
@@ -236,6 +238,7 @@ public class ComponentManager
                 }
                 break;
             case "Stack 3 Output":
+                if (isHanoi && IsDefaultTarget()) break;
                 if (sList.Count >= 3 && !sList[2].GetComponent<ComponentBase>().isEmpty())
                 {
                     float posX = targetComponent.tag == "Output" ? sList[2].GetComponent<ComponentBase>().outputPoint : targetComponent.position.x;
@@ -338,5 +341,10 @@ public class ComponentManager
     public void ChangeComponentSpeed(float t)
     {
         currentComponent.GetComponent<ComponentBase>().intervalTime = t;
+    }
+
+    public bool IsDefaultTarget()
+    {
+        return targetComponent == output;
     }
 }

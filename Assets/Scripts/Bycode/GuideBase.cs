@@ -26,20 +26,27 @@ public class GuideBase : MonoBehaviour
         }
     }
     //这里是来获取目标物体的四个点来计算中心点，因为对于矩形或者圆形效果，他们面对的中心点是确定的
-    public virtual void Guide(Canvas canvas, RectTransform target, bool isInit=false)
+    public virtual void Guide(Canvas canvas, RectTransform target=null, bool isInit=false)
     {
         material = GetComponent<Image>().material;
         this.target = target;
         //获取四个点的世界坐标
-        target.GetWorldCorners(targetCorners);
-        //世界坐标转屏幕坐标
-        for (int i = 0; i < targetCorners.Length; i++)
+        if (target != null )
         {
-            targetCorners[i] = WorldToScreenPoints(canvas, targetCorners[i]);
+            target.GetWorldCorners(targetCorners);
+            //世界坐标转屏幕坐标
+            for (int i = 0; i < targetCorners.Length; i++)
+            {
+                targetCorners[i] = WorldToScreenPoints(canvas, targetCorners[i]);
+            }
+            //计算中心点
+            center.x = targetCorners[0].x + (targetCorners[3].x - targetCorners[0].x) / 2;
+            center.y = targetCorners[0].y + (targetCorners[1].y - targetCorners[0].y) / 2;
+        } else
+        {
+            center.x = 0;
+            center.y = 0;
         }
-        //计算中心点
-        center.x = targetCorners[0].x + (targetCorners[3].x - targetCorners[0].x) / 2;
-        center.y = targetCorners[0].y + (targetCorners[1].y - targetCorners[0].y) / 2;
         //设置中心点
         material.SetVector("_Center", center);
     }

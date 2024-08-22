@@ -11,14 +11,14 @@ public class GuidePanel : MonoBehaviour
     [SerializeField] string errorText;
     [SerializeField] RectTransform clickLine;
     bool isFinished;
-    bool reStart;
+    static bool reStart;
 
     private void Start()
     {
         canvas = transform.GetComponentInParent<Canvas>();
         guideController = transform.GetComponent<GuideController>();
-        guideController.Guide(canvas, gameObject.GetComponent<RectTransform>(), GuideType.None);
-        if (!isFinished)
+        guideController.Guide(canvas, null, GuideType.None);
+        if (!isFinished && !reStart)
             gameObject.GetComponentInChildren<Text>().text = welcomText;
 
         
@@ -34,13 +34,13 @@ public class GuidePanel : MonoBehaviour
         if (guideController.endOfTutorial)
         {
             
-            if (isFinished && SceneManager.GetActiveScene().buildIndex < 6)
+            if (isFinished && SceneManager.GetActiveScene().buildIndex < 8) // Level clear
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
-            else if (reStart)
+            else if (reStart) // Level failed
             {
-                TestGameManager.instance.ResetLevel();
+                GameManager.instance.ResetLevel();
                 return;
             }
             gameObject.SetActive(false);
@@ -66,8 +66,12 @@ public class GuidePanel : MonoBehaviour
 
     public void ErrorMessage()
     {
-        guideController.Guide(canvas, gameObject.GetComponent<RectTransform>(), GuideType.None);
+        
+        guideController = transform.GetComponent<GuideController>();
+        guideController.endOfTutorial = true;
+        guideController.Guide(canvas, null, GuideType.None);
         gameObject.SetActive(true);
+
         gameObject.GetComponentInChildren<Text>().text = errorText;
         reStart = true;
     }
