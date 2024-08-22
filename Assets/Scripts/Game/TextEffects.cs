@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TextEffects : MonoBehaviour
 {
-    [SerializeField] private int letterPerSecond;//显示的速度
+    [SerializeField] private int letterPerSecond;// print speed
 
     [SerializeField] Text dialogText;
     [SerializeField] string dialog;
@@ -20,12 +20,12 @@ public class TextEffects : MonoBehaviour
         StartCoroutine(TypeDialog(dialog));
     }
 
-    public IEnumerator TypeDialog(string dialog)//协程
+    public IEnumerator TypeDialog(string dialog)
     {
         foreach (var letter in dialog.ToCharArray())
         {
             dialogText.text += letter;
-            yield return new WaitForSeconds(1f / letterPerSecond);//字体显示停顿时间
+            yield return new WaitForSeconds(1f / letterPerSecond);// print interval time
         }
     }
 

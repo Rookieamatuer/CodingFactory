@@ -5939,8 +5939,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\tWelcome! Try to complete the transmission. \n\nNotice: If you are not
-    sure about what the component is, try to focus your mouse on it\ntarget sequence:"
+  m_Text: "\tWelcome! Try to complete the transmission. \nNotice: If you are not
+    sure about what the component is, try to focus your mouse on it or click the
+    corresponded name at the bottom of the screen to see the working animation!\ntarget
+    sequence:"
 --- !u!222 &1256117428407864590
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -3520,7 +3520,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 584, y: 103}
+  m_AnchoredPosition: {x: 584, y: 212}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1622249875
@@ -5021,8 +5021,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\tWelcome! Try to complete the transmission. \n\nNotice: If you are not
-    sure about what the component is, try to focus your mouse on it\ntarget sequence:"
+  m_Text: "\tWelcome! Try to complete the transmission. \nNotice: If you are not
+    sure about what the component is, try to focus your mouse on it or click the
+    corresponded name at the bottom of the screen to see the working animation!\ntarget
+    sequence:"
 --- !u!224 &1223289961915357253
 RectTransform:
   m_ObjectHideFlags: 0

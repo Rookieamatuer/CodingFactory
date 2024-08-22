@@ -340,7 +340,32 @@ public class ComponentManager
 
     public void ChangeComponentSpeed(float t)
     {
-        currentComponent.GetComponent<ComponentBase>().intervalTime = t;
+        if (tmpArea != null)
+        {
+            tmpArea.GetComponent<ComponentBase>().intervalTime = t;
+        }
+        if (stack != null)
+        {
+            stack.GetComponent<ComponentBase>().intervalTime = t;
+        } 
+        if (queue != null)
+        {
+            queue.GetComponent<ComponentBase>().intervalTime = t;
+        } 
+        if (sList.Count > 0)
+        {
+            foreach (Transform s in sList)
+            {
+                s.GetComponent<ComponentBase>().intervalTime = t;
+            }
+        }
+        if (qList.Count > 0)
+        {
+            foreach (Transform q in qList)
+            {
+                q.GetComponent<ComponentBase>().intervalTime = t;
+            }
+        }
     }
 
     public bool IsDefaultTarget()

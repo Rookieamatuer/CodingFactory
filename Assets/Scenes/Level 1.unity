@@ -4071,8 +4071,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\tWelcome! Try to use the machine to output the target data. \n\nNotice:
-    If you are not sure about what the component is and what it can do, try to focus
-    your mouse on it\ntarget sequence:"
+    If you are not sure about what the component is, try to focus your mouse on it\ntarget
+    sequence:"
 --- !u!222 &1256117427232870170
 CanvasRenderer:
   m_ObjectHideFlags: 0

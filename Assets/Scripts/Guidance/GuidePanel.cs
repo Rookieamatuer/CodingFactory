@@ -34,7 +34,7 @@ public class GuidePanel : MonoBehaviour
         if (guideController.endOfTutorial)
         {
             
-            if (isFinished && SceneManager.GetActiveScene().buildIndex < 8) // Level clear
+            if (isFinished && SceneManager.GetActiveScene().buildIndex < 9) // Level clear
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
@@ -62,6 +62,7 @@ public class GuidePanel : MonoBehaviour
         gameObject.GetComponentInChildren<Text>().text = successText;
         
         isFinished = true;
+        reStart = false;
     }
 
     public void ErrorMessage()

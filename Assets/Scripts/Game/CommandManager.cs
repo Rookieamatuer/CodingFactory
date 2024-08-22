@@ -136,7 +136,7 @@ public class CommandManager : MonoBehaviour
 
     public void RemoveCommand()
     {
-        if (count < 0) return;
+        if (count < 0 || GameManager.instance.currentCommand == count) return;
         if (commands[count - 1].GetComponentInChildren<Text>().text == "StackOff" || commands[count - 1].GetComponentInChildren<Text>().text == "StackOn")
         {
             stOn = !stOn;
@@ -147,7 +147,7 @@ public class CommandManager : MonoBehaviour
         }
         else if (commands[count - 1].GetComponentInChildren<Text>().text == "Stack 1 Off" || commands[count - 1].GetComponentInChildren<Text>().text == "Stack 1 On" 
             || commands[count - 1].GetComponentInChildren<Text>().text == "Stack 2 Off" || commands[count - 1].GetComponentInChildren<Text>().text == "Stack 2 On" 
-            || commands[count - 1].GetComponentInChildren<Text>().text == "Stack 3 Off" || commands[count - 1].GetComponentInChildren<Text>().text == "Stack 3 On")
+            || commands[count - 1].GetComponentInChildren<Text>().text == "Stack 3 Off" || commands[count - 1].GetComponentInChildren<Text>().text == "Stack 3 On") // Special for multiple stacks level
         {
             if (count == 1) 
             { 
@@ -164,7 +164,7 @@ public class CommandManager : MonoBehaviour
             stackStatus.RemoveAt(count - 1);
         }
         else if (commands[count - 1].GetComponentInChildren<Text>().text == "Queue 1 Off" || commands[count - 1].GetComponentInChildren<Text>().text == "Queue 1 On"
-            || commands[count - 1].GetComponentInChildren<Text>().text == "Queue 2 Off" || commands[count - 1].GetComponentInChildren<Text>().text == "Queue 2 On")
+            || commands[count - 1].GetComponentInChildren<Text>().text == "Queue 2 Off" || commands[count - 1].GetComponentInChildren<Text>().text == "Queue 2 On") // special for multiple queues level
         {
             if (count == 1)
             {

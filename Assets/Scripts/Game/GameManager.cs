@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject targetArea = null;
     public Transform infoText = null;
 
-    int currentCommand;
+    public int currentCommand { get; private set; }
 
     ComponentManager componentManager;
     public static GameManager instance;
@@ -92,12 +92,13 @@ public class GameManager : MonoBehaviour
         tmpTime = Time.time;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (isWorking)//如果被点击
+        // restrict click interval time
+        if (isWorking)
         {
             tmpTime += Time.deltaTime;
-            //间隔时长
+            
             if (tmpTime > intervalTime * 1.5f)
             {
                 tmpTime = 0;
@@ -147,7 +148,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Wrong!");
         }
         List<GameObject> commands = block.GetComponent<CommandManager>().commands;
-        for (currentCommand = 0; currentCommand < commands.Count; currentCommand++)
+        for (; currentCommand < commands.Count; currentCommand++)
         {
             isWorking = true;
             executeBtn.enabled = false;
